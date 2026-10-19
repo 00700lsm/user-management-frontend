@@ -18,6 +18,11 @@ Run when asked to prepare, implement or validate a Frontend feature. Report the 
 2. Read Contract `docs/aa/README.md`, `docs/aa/decisions.md`, `docs/ui-structure.md`, `docs/ui-guidelines.md`, `docs/aa/auth-design.md`, `docs/aa/mock-fixtures.md`, `docs/aa/integration-test-plan.md`, and `docs/governance/git-workflow.md`.
 3. Read own `docs/aa/README.md`, `CONTRIBUTING.md` and `contract.sha`. Confirm Backend's contract.sha equals own. **Use OpenAPI at pinned commit** for actual generated types; current Contract dev head is not automatically approved.
 
+## Recommended project stack (verify approval before setup)
+- **Read own `docs/aa/tech-stack.md` and sibling Contract `docs/aa/tech-stack-proposal.md`** before scaffolding, adding major dependencies or changing the project setup.
+- Proposed stack: React + TypeScript + Vite, React Router, TanStack Query, CSS Modules + mandatory `design.md` tokens, pinned openapi-typescript, MSW/Vitest/Testing Library/Playwright. This is not approved until AA resolves DEC-004.
+- Respect existing npm contract generation, do not assume npm start/dev/test scripts currently exist. Install/modify dependencies only for authorized project setup.
+
 ## 2. Project setup — only when requested
 - Inspect existing `package.json`, `src/app`, `src/features`, `src/shared/ui`, `src/shared/api`. This repo initially contains type generation tooling and placeholders, not a full app.
 - Check decisions for React/TypeScript tooling, UI library, tokens, routing, auth storage, error UX. If unresolved, propose options to AA/FE lead; do not silently choose.

@@ -37,3 +37,7 @@ Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책
 - 구체 시각 스타일/컴포넌트 기준은 이 저장소의 `design.md`를 따릅니다.
 - Cursor: `.cursor/rules/frontend-design.mdc` (alwaysApply), 기타 Agent: `AGENTS.md` / `CLAUDE.md` / Frontend Workflow Skill에서 필수 참조합니다.
 - `design.md`는 초기 제안 버전이며 AA/FE Lead의 디자인 토큰·라이브러리 확정(DEC-004)이 남아 있습니다.
+
+## Frontend 기술 스택 추천 (AA 승인 전)
+
+[Frontend 기술 스택 / 초기 디렉터리 제안](docs/aa/tech-stack.md): React + TypeScript + Vite, React Router, TanStack Query, CSS Modules(`design.md` 토큰), MSW + Vitest + Playwright. 기존 OpenAPI 타입 생성 스크립트 재사용. **아직 앱/라이브러리가 모두 설치된 상태는 아닙니다.** 기술 스택 채택은 Contract DEC-004 검토 대상입니다.
