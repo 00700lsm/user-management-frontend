@@ -13,3 +13,5 @@ Work in the Frontend Git repository only. Do not commit application code to the 
 - A=Auth, B=User, C=Permission; each developer owns their domain FE and BE.
 - When shared API/UI rules change, propose Contract PR first. Mock Auth is for tests only; do not invent response fields, JWT Role claims or GET /auth/me.
 - Feature PRs target dev and each repository has independent Git history. No automatic pull, branch switch, commit or push.
+
+- **Before Frontend scaffolding or dependency changes, read `docs/aa/tech-stack.md` and sibling Contract `docs/aa/tech-stack-proposal.md`.** Follow mandatory `design.md`. Stack choice remains proposed until DEC-004 approved.
