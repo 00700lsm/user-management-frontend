@@ -1,0 +1,12 @@
+{
+  "name": "user-management-frontend",
+  "private": true,
+  "scripts": {
+    "contract:sync": "bash scripts/sync-contract.sh",
+    "contract:generate": "npm run contract:sync && openapi-typescript .contract-cache/openapi.yaml -o src/shared/api/generated/schema.d.ts",
+    "contract:check": "npm run contract:generate && test -s src/shared/api/generated/schema.d.ts"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.10.1"
+  }
+}
