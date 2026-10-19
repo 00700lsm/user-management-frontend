@@ -1,0 +1,4 @@
+.contract-cache/
+node_modules/
+src/shared/api/generated/
+dist/
