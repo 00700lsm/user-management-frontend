@@ -2,6 +2,12 @@
 
 **상태: 미완료, 개발 전 확인용.** 정본: [공통 UI 기준](https://github.com/00700lsm/user-management-contract/blob/dev/docs/ui-guidelines.md).
 
+## Frontend 필수 디자인 기준
+
+- [ ] **Frontend 루트 [design.md](../../design.md)를 구현 전에 읽음** (해당 화면/컴포넌트/CSS 변경 전체)
+- [ ] `design.md`의 토큰·Button/Input/Card/Table/Modal·Page Layout·Responsive·Focus/오류 상태 적용
+- [ ] Contract 공통 UI 원칙과 `design.md`가 충돌하면 AA/FE Lead와 협의하고 변경 이력 기록
+
 ## AA/FE Lead 공통 결정
 - [ ] 공통 Shell(Header/Sidebar/Content), 메뉴/경로 확정
 - [ ] Color/Typography/Spacing/Responsive 디자인 토큰 확정
