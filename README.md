@@ -20,3 +20,11 @@
 ## AA 설계 인계
 
 [Frontend AA 인계서](docs/aa/README.md)에 화면 ID·경로·API 연계, 사용자 흐름, 공통 UI 품질 체크리스트가 있습니다. 요구/IA/OpenAPI 정본은 Contract 저장소를 참조합니다.
+
+## AI Agent 개발 스킬
+
+- [Frontend 단계별 스킬](.agents/skills/frontend-workflow/SKILL.md): 프로젝트 초기화·공통 Contract 확인·화면 개발·Mock Auth·실제 통합·테스트·PR
+- [Claude Code용 스킬](.claude/skills/frontend-workflow/SKILL.md)
+- [공통 스킬 작성 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
+
+Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책·Mock Fixture·테스트 계획은 Contract 문서가 정본이며 API 타입은 `contract.sha`로 고정합니다.
