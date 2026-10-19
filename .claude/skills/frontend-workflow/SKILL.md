@@ -8,3 +8,5 @@ description: Use on frontend setup, feature implementation, authenticated page m
 Read and execute the canonical project Skill at `.agents/skills/frontend-workflow/SKILL.md` from this repository root.
 
 Read the sibling Contract repository at `../user-management-contract` and the approved API version in `contract.sha`. Do not invent authentication contracts, overwrite local changes, or commit code in Workspace root.
+
+**Mandatory:** Read the complete Frontend root `design.md` before any screen/UI/CSS implementation and verify its tokens, components, page layout and responsive rules; Contract AA rules remain authoritative.

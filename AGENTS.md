@@ -1,5 +1,9 @@
 # Frontend Agent Guide
 
+## Mandatory visual/CSS design gate
+
+**For every screen, component, page layout, styling or CSS change, read the complete root `design.md` BEFORE implementation.** Follow its CSS tokens, buttons, cards, tables, forms, responsive layout and accessibility checklist. This applies even when the frontend-workflow skill is not invoked. Design exceptions require an explained review; Contract AA UI/IA requirements have higher authority. Cursor additionally uses `.cursor/rules/frontend-design.mdc`.
+
 Work in the Frontend Git repository only. Do not commit application code to the Workspace root.
 
 - Workflow Skill: `.agents/skills/frontend-workflow/SKILL.md`.

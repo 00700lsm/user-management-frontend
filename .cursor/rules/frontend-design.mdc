@@ -1,0 +1,14 @@
+---
+description: Mandatory User Management Frontend design system for page, component, layout and CSS work.
+alwaysApply: true
+---
+
+# Mandatory Frontend Design Reference
+
+- **Before generating, modifying or reviewing any Frontend UI, styles, layout, screen or shared UI component, read the repository root `design.md`.** Treat it as the required visual/CSS implementation baseline, not an optional suggestion.
+- First respect the common AA UI principles and screen IA in sibling `../user-management-contract/docs/ui-guidelines.md` and `docs/ui-structure.md`. From Workspace root the Contract path is `repos/user-management-contract`.
+- Implement the page/component tokens, Button/Input/Card/Table/Modal patterns, spacing, responsive layout, keyboard/focus states and verification checklist from `design.md`.
+- **Reuse `src/shared/ui`**; avoid per-screen button dimensions, arbitrary CSS hex values, duplicated layout or isolated visual design systems.
+- If `design.md` conflicts with approved Contract rules or cannot satisfy a task, report the conflict and propose an explicit reviewed change instead of silently ignoring it.
+- New work must identify its UI/REQ ID and include a quick design consistency review in the result or PR.
+- This file is a Cursor project rule; `AGENTS.md`, `CLAUDE.md` and the Frontend Skill apply the same requirement to other agents.

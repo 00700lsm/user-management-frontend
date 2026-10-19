@@ -28,3 +28,12 @@
 - [공통 스킬 작성 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
 
 Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책·Mock Fixture·테스트 계획은 Contract 문서가 정본이며 API 타입은 `contract.sha`로 고정합니다.
+
+## 필수 화면·CSS 디자인 기준
+
+**[design.md](design.md)** — 모든 Frontend 화면/컴포넌트/CSS 구현 전 반드시 확인하는 디자인 시스템입니다. 버튼·입력창·카드·테이블·모달·공통 레이아웃·반응형·색상 토큰·화면별 템플릿을 정의했습니다.
+
+- 공통 업무·화면 IA 및 UI 원칙은 **Contract 저장소**의 문서를 우선합니다.
+- 구체 시각 스타일/컴포넌트 기준은 이 저장소의 `design.md`를 따릅니다.
+- Cursor: `.cursor/rules/frontend-design.mdc` (alwaysApply), 기타 Agent: `AGENTS.md` / `CLAUDE.md` / Frontend Workflow Skill에서 필수 참조합니다.
+- `design.md`는 초기 제안 버전이며 AA/FE Lead의 디자인 토큰·라이브러리 확정(DEC-004)이 남아 있습니다.
