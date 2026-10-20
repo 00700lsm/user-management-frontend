@@ -1,6 +1,6 @@
-# Frontend 기술 스택 및 초기 구성 제안 (AA 검토 전)
+# Frontend 기술 스택 및 초기 구성 기준 (Accepted)
 
-**상태: Accepted PoC 스택. Frontend Scaffold 파일 생성됨 / 실제 설치·빌드 미검증.** 공통 기술 스택의 정본은 sibling Contract의 `../user-management-contract/docs/aa/tech-stack-proposal.md`입니다. 기술 선택은 Contract DEC-004 기준으로 확정됐습니다.
+**상태: Accepted PoC 스택. Frontend Scaffold 파일 생성됨 / GitHub Actions 빌드·테스트 성공.** 공통 기술 스택의 정본은 sibling Contract의 `../user-management-contract/docs/aa/tech-stack-proposal.md`입니다. 기술 선택은 Contract DEC-004 기준으로 확정됐습니다.
 
 ## 추천
 | 계층 | 기술 | 이유 |
@@ -21,7 +21,7 @@
 
 실제 CSS·Button/Card/Input/Table/Modal, 테마·반응형은 **Frontend 루트 [design.md](../../design.md)를 구현 전 반드시 확인**합니다. CSS Modules는 스타일 격리 수단이지 별도 디자인 시스템이 아닙니다. Tailwind, MUI, Chakra, shadcn/ui 등을 추가 도입하려면 DEC-004와 공통 컴포넌트·디자인 토큰 정합성부터 재검토합니다.
 
-## 권장 초기 디렉터리 (아직 코드 생성 전)
+## 초기 디렉터리 목표와 생성된 구조
 
 ```text
 src/
@@ -45,13 +45,13 @@ React Router/Query/공통 Button/토큰/Mock Route 골격이 생성됐습니다.
 ## 구현 순서
 1. Contract 공통 `docs/aa/README.md`, `docs/aa/decisions.md`, `docs/aa/tech-stack-proposal.md`와 Frontend `design.md` 읽기
 2. DEC-004(스타일/컴포넌트/라이브러리), DEC-001/009(인증 상태/Role) 및 공통 Shell 검토
-3. Vite TS 기반 앱(승인 후) + 기본 Router + QueryClient + `design.md` Token/CSS Modules + 공통 UI 구현
+3. Vite TS 기반 앱(이미 기본 골격 생성) + 기본 Router + QueryClient + `design.md` Token/CSS Modules + 공통 UI 구현
 4. `npm install`, `npm run contract:generate`로 승인 SHA 타입 생성
 5. MSW Guest/USER/ADMIN Fixture + AuthProvider Mock/Real Adapter 분리
 6. A/B/C 개별 화면 구현. Mock만으로 완료 판단 금지: Real Auth G3, E2E G4 실시
 
 ## 검증/개발 주의
-- 테스트 스크립트가 실제로 존재하는지 먼저 확인. `npm run test` 등의 미설치 명령을 있다고 가정하지 않음.
+- `npm run test`, `npm run typecheck`, `npm run build`, `npm run test:e2e`가 있으며 GitHub Actions의 Mock UI G1 테스트가 통과했습니다. G3/G4 실제 Auth/E2E는 미구현.
 - `GET /auth/me`, JWT Role Claims는 현재 Contract에 없는 것으로 간주; Contract 변경 PR 승인 전 임의 사용 금지.
 - 개발 Proxy/환경별 API Base URL은 앱 골격 구성 시 결정. 환경별 URL/Secret을 클라이언트 소스에 하드코딩하지 않음.
 - 명시적 승인 없이 기존 `contract.sha`를 바꾸거나 사용자의 기존 브랜치를 변경하지 않음.
