@@ -15,7 +15,7 @@
 
 디자인/레이아웃 중복을 막기 위해 공통 UI는 `src/shared/ui`, API 접근 계층은 `src/shared/api`에 둡니다. 화면별 기능 모듈에서 **직접 임의의 API 스키마를 정의하지 않습니다.**
 
-현재 기술 스택은 미정이며 실행 가능한 앱은 아직 구현되지 않은 **설계 골격**입니다.
+기술 스택은 **React 19 + TypeScript + Vite 8 + React Router + TanStack Query + CSS Modules**로 확정됐습니다. 라우터/디자인/Mock 기반 **실행 골격은 생성됐지만**, 업무 기능과 실제 Auth API는 아직 구현 전입니다.
 
 ## AA 설계 인계
 
@@ -36,8 +36,21 @@ Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책
 - 공통 업무·화면 IA 및 UI 원칙은 **Contract 저장소**의 문서를 우선합니다.
 - 구체 시각 스타일/컴포넌트 기준은 이 저장소의 `design.md`를 따릅니다.
 - Cursor: `.cursor/rules/frontend-design.mdc` (alwaysApply), 기타 Agent: `AGENTS.md` / `CLAUDE.md` / Frontend Workflow Skill에서 필수 참조합니다.
-- `design.md`는 초기 제안 버전이며 AA/FE Lead의 디자인 토큰·라이브러리 확정(DEC-004)이 남아 있습니다.
+- PoC의 `design.md` 비주얼 토큰/CSS Modules 기준은 Contract DEC-004에서 Accepted됐습니다.
 
-## Frontend 기술 스택 추천 (AA 승인 전)
+## Frontend 기술 스택 (PoC Accepted)
 
-[Frontend 기술 스택 / 초기 디렉터리 제안](docs/aa/tech-stack.md): React + TypeScript + Vite, React Router, TanStack Query, CSS Modules(`design.md` 토큰), MSW + Vitest + Playwright. 기존 OpenAPI 타입 생성 스크립트 재사용. **아직 앱/라이브러리가 모두 설치된 상태는 아닙니다.** 기술 스택 채택은 Contract DEC-004 검토 대상입니다.
+[Frontend 기술 스택 / 초기 디렉터리 제안](docs/aa/tech-stack.md): React + TypeScript + Vite, React Router, TanStack Query, CSS Modules(`design.md` 토큰), MSW + Vitest + Playwright. 기존 OpenAPI 타입 생성 스크립트 재사용. 실제 애플리케이션 골격과 package.json은 추가됐습니다. 설치·빌드·서버 연동은 사용자의 개발환경에서 실행/검증이 필요합니다.
+
+## 기본 앱 실행
+
+```bash
+npm install
+npm run contract:generate
+npm run mocks:init
+cp .env.example .env.local
+# 개발용 Mock 사용 시 .env.local 에 VITE_ENABLE_MOCKS=true
+npm run dev
+```
+
+참고: [구현 상태](docs/implementation-status.md). H2 서버는 Backend Repo에서 별도로 실행합니다. `mocks:init`이 생성하는 공식 MSW Worker 파일은 Git 추적에서 제외됩니다.

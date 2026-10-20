@@ -1,0 +1,31 @@
+name: Frontend build and UI checks
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install
+      - name: Generate API types from pinned Contract
+        run: npm run contract:generate
+      - name: Initialize MSW worker for dev test
+        run: npm run mocks:init
+      - name: Typecheck, unit tests, build
+        run: |
+          npm run typecheck
+          npm run test
+          npm run build
+      - name: Browser setup
+        run: npx playwright install --with-deps chromium
+      - name: Mock UI smoke (G1 only)
+        run: npm run test:e2e

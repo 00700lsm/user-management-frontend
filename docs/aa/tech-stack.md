@@ -1,6 +1,6 @@
 # Frontend 기술 스택 및 초기 구성 제안 (AA 검토 전)
 
-**상태: Proposed / 아직 Scaffold/패키지 설치 미진행.** 공통 기술 스택의 정본은 sibling Contract의 `../user-management-contract/docs/aa/tech-stack-proposal.md`입니다. 기술 스택 최종 채택은 DEC-004/관련 항목 검토 후.
+**상태: Accepted PoC 스택. Frontend Scaffold 파일 생성됨 / 실제 설치·빌드 미검증.** 공통 기술 스택의 정본은 sibling Contract의 `../user-management-contract/docs/aa/tech-stack-proposal.md`입니다. 기술 선택은 Contract DEC-004 기준으로 확정됐습니다.
 
 ## 추천
 | 계층 | 기술 | 이유 |
@@ -15,7 +15,7 @@
 | Mock | MSW | HTTP 경계에서 승인 API Contract 기반 Mock, 개발/테스트 전용 |
 | Unit UI test | Vitest + React Testing Library | 화면·컴포넌트·Auth Guard 단위 검증 |
 | E2E | Playwright | 실제 Auth 연결 후 가입/로그인/권한 등 G4 검증 |
-| 패키지 | 기존 `npm` 스크립트 유지, Node LTS | 기존 계약 생성 도구 재사용. 실제 Vite 요구 Node 버전 확인 |
+| 패키지 | 기존 `npm` 스크립트 유지, Node LTS | 기존 계약 생성 도구 재사용. Node 22.12+ 권장 |
 
 ## 디자인 기준은 선택사항이 아님
 
@@ -37,10 +37,10 @@ src/
     ├── api/             # OpenAPI generated 타입 + 단일 API Client
     │   └── generated/
     ├── ui/              # 디자인 공통 컴포넌트 / 토큰 / CSS
-    └── mocks/           # MSW 테스트/개발 전용 Fixture (승인 후)
+    └── mocks/           # MSW 테스트/개발 전용 Fixture (AA 기준에 따라)
 ```
 
-기존 파일/폴더는 확인한 뒤 필요한 부분만 수정하고, 전면 삭제·새 UI 도입을 자동 수행하지 않습니다.
+React Router/Query/공통 Button/토큰/Mock Route 골격이 생성됐습니다. 상세 도메인 기능은 A/B/C 구현 대상입니다.
 
 ## 구현 순서
 1. Contract 공통 `docs/aa/README.md`, `docs/aa/decisions.md`, `docs/aa/tech-stack-proposal.md`와 Frontend `design.md` 읽기

@@ -1,0 +1,19 @@
+:root {
+  color-scheme: light;
+  --ui-bg: #f8fafc; --ui-surface: #ffffff; --ui-surface-muted: #f1f5f9;
+  --ui-text: #0f172a; --ui-text-secondary: #475569; --ui-text-muted: #64748b;
+  --ui-border: #e2e8f0; --ui-border-strong: #cbd5e1;
+  --ui-primary: #2563eb; --ui-primary-hover: #1d4ed8; --ui-primary-soft: #eff6ff;
+  --ui-success: #15803d; --ui-success-soft: #f0fdf4;
+  --ui-warning: #a16207; --ui-warning-soft: #fefce8;
+  --ui-danger: #b91c1c; --ui-danger-hover: #991b1b; --ui-danger-soft: #fef2f2;
+  --ui-focus: #93c5fd; --ui-overlay: rgb(15 23 42 / 48%);
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-full: 9999px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+  --shadow-card: 0 1px 3px rgb(15 23 42 / 5%);
+  --shadow-popover: 0 12px 32px rgb(15 23 42 / 12%);
+  --height-control: 40px; --height-control-sm: 36px;
+  --height-table-row: 52px; --height-header: 64px;
+  --width-sidebar: 240px; --width-content: 1280px;
+}
