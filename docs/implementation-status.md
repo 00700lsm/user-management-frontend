@@ -20,12 +20,12 @@
 ```bash
 npm install
 npm run contract:generate
-npx msw init public --save
+npm run mocks:init
 cp .env.example .env.local
 # .env.local에서 VITE_ENABLE_MOCKS=true (개발만)
 npm run dev
 ```
 
-별도 Terminal에서 `npm run test`, `npm run typecheck`, `npm run build`. Playwright 브라우저 설치 후 `npm run test:e2e`는 **Mock UI 라우트 테스트만** 실행합니다.
+프로덕션 Build는 prebuild로 승인된 Contract 타입을 재생성합니다.\n\n별도 Terminal에서 `npm run test`, `npm run typecheck`, `npm run build`. Playwright 브라우저 설치 후 `npm run test:e2e`는 **Mock UI 라우트 테스트만** 실행합니다.
 
 `npm run contract:generate`는 `contract.sha`에 고정된 원격 OpenAPI를 다운로드하므로 GitHub 네트워크 접근이 필요합니다.

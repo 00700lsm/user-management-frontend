@@ -72,7 +72,7 @@ export function App() {
         <Route path="/settings/password" element={<Scaffold title="비밀번호 변경" description="Auth / UI-AUTH-002 · API 연결 전" />} />
         <Route element={<Protected admin />}>
           <Route path="/admin/users" element={<UserListPage />} />
-          <Route path="/admin/users/:id" element={<Scaffold title="사용자 상세" description="User / UI-USER-004 · API 연결 전" links={[{ path: "../roles", label: "권한 화면은 URL에서 사용자 ID로 연결합니다" }]} />} />
+          <Route path="/admin/users/:id" element={<Scaffold title="사용자 상세" description="User / UI-USER-004 · API 연결 전" />} />
           <Route path="/admin/roles" element={<Scaffold title="역할 관리" description="Permission / UI-PERM-001 · API 연결 전" />} />
           <Route path="/admin/users/:id/roles" element={<Scaffold title="사용자 권한 관리" description="Permission / UI-PERM-002 · API 연결 전" />} />
         </Route>
