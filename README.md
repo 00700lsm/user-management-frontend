@@ -40,7 +40,7 @@ Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책
 
 ## Frontend 기술 스택 (PoC Accepted)
 
-[Frontend 기술 스택 / 초기 디렉터리 제안](docs/aa/tech-stack.md): React + TypeScript + Vite, React Router, TanStack Query, CSS Modules(`design.md` 토큰), MSW + Vitest + Playwright. 기존 OpenAPI 타입 생성 스크립트 재사용. 실제 애플리케이션 골격과 package.json은 추가됐습니다. 설치·빌드·서버 연동은 사용자의 개발환경에서 실행/검증이 필요합니다.
+[Frontend 기술 스택 / 초기 디렉터리 제안](docs/aa/tech-stack.md): React + TypeScript + Vite, React Router, TanStack Query, CSS Modules(`design.md` 토큰), MSW + Vitest + Playwright. 기존 OpenAPI 타입 생성 스크립트 재사용. 실제 애플리케이션 골격과 package.json은 추가됐습니다. GitHub Actions의 타입 검사·빌드·Mock UI 테스트가 통과했으며 실제 Backend 연동은 미구현입니다.
 
 ## 기본 앱 실행
 
@@ -53,4 +53,23 @@ cp .env.example .env.local
 npm run dev
 ```
 
-참고: [구현 상태](docs/implementation-status.md). H2 서버는 Backend Repo에서 별도로 실행합니다. `mocks:init`이 생성하는 공식 MSW Worker 파일은 Git 추적에서 제외됩니다.
+참고: [구현 상태](docs/implementation-status.md). H2는 Backend에 내장되어 별도 H2 서버가 필요하지 않습니다. `mocks:init`이 생성하는 공식 MSW Worker 파일은 Git 추적에서 제외됩니다.
+
+## 로컬 실행 및 확인
+
+**요구 환경:** Node.js 24/npm, Bash, 인터넷(패키지 설치·Contract SHA 다운로드). Workspace에서 실행한다면 `cd repos/user-management-frontend`로 이동합니다.
+
+```bash
+npm install
+npm run contract:generate
+npm run mocks:init
+cp .env.example .env.local
+npm run dev
+```
+
+개발용 화면만 확인하려면 `.env.local` 파일을 열어 `VITE_ENABLE_MOCKS=true`로 변경한 후 실행하세요. 브라우저에서 **http://localhost:5173/login**에 접속하고 **Mock USER / Mock ADMIN** 버튼으로 화면을 확인합니다.
+
+- Mock은 개발 모드에서만 활성화되며 **서명된 JWT/실제 Backend 인증이 아닙니다.** `VITE_ENABLE_MOCKS=false`로 변경하면 `/api` 요청이 Vite Proxy를 통해 **http://localhost:8080**의 Backend로 전달됩니다. 변경 시 개발 서버를 재시작하세요.
+- Backend 실제 Auth/업무 API는 아직 구현되지 않았으므로 Mock을 끄면 로그인·프로필·관리자 기능이 정상 동작하지 않을 수 있습니다.
+- 확인 명령: `npm run typecheck`, `npm run test`, `npm run build`. 브라우저 Mock 테스트: `npx playwright install chromium` 후 `npm run test:e2e`.
+- `npm run contract:generate`는 `contract.sha`에 고정된 OpenAPI 타입을 생성합니다. `mocks:init`은 공식 MSW Worker를 생성하며 해당 파일은 Git에서 제외됩니다.
