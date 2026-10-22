@@ -1,8 +1,9 @@
 name: Frontend contract type generation
 on:
   pull_request:
+    branches: [main, dev]
   push:
-    branches: [main]
+    branches: [main, dev]
 jobs:
   contract-types:
     runs-on: ubuntu-latest

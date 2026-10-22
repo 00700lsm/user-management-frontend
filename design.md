@@ -1,10 +1,10 @@
 # User Management Frontend — Design System & CSS Guide
 
-> **Version:** UI Design Baseline v0.1 · **상태:** 초기 제안 / AA·FE Lead 검토 필요 (Contract DEC-004 미확정)
+> **Version:** UI Design Baseline v0.1 · **상태:** PoC Accepted DEC-004 기반의 Frontend 시각·CSS 기준 (개별 화면 구현·접근성·실통합 검증은 별개)
 >
 > 모든 Frontend 페이지·공통 컴포넌트·스타일 수정 전에 **반드시 이 파일을 읽고 준수**합니다. 공통 업무·화면 목적·권한/IA의 정본은 sibling `../user-management-contract/docs/ui-guidelines.md`, `docs/ui-structure.md`, `openapi.yaml` 및 본 저장소의 `contract.sha`입니다. 충돌 시 Contract를 우선하고 디자인 변경 제안을 남깁니다.
 >
-> 이 문서는 **시각 디자인과 CSS 구현 기준**입니다. 실제 CSS 컴포넌트가 이미 구현되었다는 뜻은 아닙니다. 라이브러리·폰트 설치·다크 모드 등 미결정 선택은 AA/FE Lead와 합의합니다.
+> 이 문서는 **시각 디자인과 CSS 구현 기준**입니다. `src/shared/ui/styles/tokens.css`와 공통 Button 등 초기 구현은 존재하지만 모든 공통 컴포넌트/화면이 구현됐다는 뜻은 아닙니다. 무거운 UI 라이브러리 추가·다크 모드 등 PoC 범위를 바꾸는 선택은 AA/FE Lead와 합의합니다.
 
 ## 1. 디자인 방향
 
@@ -18,7 +18,7 @@
 
 ## 2. 토큰 (CSS Custom Properties)
 
-색상은 하드코딩해서 화면마다 복사하지 않습니다. 초기 라이트 테마 토큰을 `src/shared/ui/styles/tokens.css` 등의 공통 스타일 파일에 구현하세요 (현재 문서는 명세).
+색상은 하드코딩해서 화면마다 복사하지 않습니다. 현재 `src/shared/ui/styles/tokens.css`에 기본 라이트 토큰이 구현돼 있습니다. 새 토큰은 공통 파일에서 관리하고 이 문서와 동기화합니다.
 
 ```css
 :root {
@@ -256,7 +256,7 @@ button, input, select, textarea { font: inherit; }
 }
 ```
 
-**구현 권장 위치:** `src/shared/ui/styles/tokens.css`, `src/shared/ui/styles/global.css`, `src/shared/ui/components/*`. 이는 **목표 디렉터리**이며 현재 파일이 존재한다는 의미가 아닙니다. 최종 라이브러리/구조는 FE Lead 승인 후 결정합니다.
+**현재 공통 UI 위치:** `src/shared/ui/styles/tokens.css`, `src/shared/ui/styles/global.css`, `src/shared/ui/components/*`. 기본 Button/스타일은 구현됐지만 나머지 컴포넌트와 UX 상태는 기능 개발 단계에서 추가 검증합니다. 승인된 스택(DEC-004)을 임의 변경하지 않습니다.
 
 ## 7. 접근성 / 품질 기준
 - 일반 본문 텍스트 대비 **4.5:1 이상**, 큰 텍스트/주요 UI 경계 **3:1 이상**을 목표로 확인; 상태는 색+텍스트로 표현.

@@ -32,8 +32,8 @@ flowchart TB
 - App Shell은 인증 상태/권한에 따라 메뉴 및 접근을 제한하되 Backend의 권한 검사를 대체하지 않습니다.
 - 관리자 화면은 ADMIN 전용; 비인가 시 안내 상태를 처리합니다.
 - UI는 Empty/Loading/Error/Success/Forbidden, 입력 검증과 키보드 접근을 지원합니다.
-- 사용자 목록에서 **Role 표시**가 필요하면 현재 User 응답에 포함되어 있지 않습니다. Permission API 추가 호출·계약 개정 중 어느 쪽인지 [DEC-008](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)에서 결정해야 합니다.
-- 관리자의 사용자 생성 초기 비밀번호 UX는 [DEC-006](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md) 결정 전 임의 확정 금지.
+- DEC-008 Accepted: 사용자 **목록에 Role 컬럼을 표시하지 않습니다**. 사용자 상세에서 `/admin/users/:id/roles`로 이동해 Permission API로 현재 Role을 조회합니다.
+- DEC-006 Accepted: 관리자가 사용자를 등록할 때 명시적 `password`를 입력하며 자동 비밀번호 발급/이메일 전송은 이번 PoC 범위 밖입니다. 비밀번호를 재표시하거나 로그에 남기지 않습니다.
 
 ## 구현자에게 맡기는 부분
-구체 UI 라이브러리·스타일 토큰·반응형 Breakpoint·컴포넌트 API 내부 구조는 Frontend Lead/개발자 설계와 합의를 거칩니다. AA 초안은 픽셀 단위 디자인 시안이 아닙니다.
+CSS Modules 및 공통 `design.md` 토큰은 DEC-004 Accepted입니다. 구체 컴포넌트 API 및 추가 비주얼 변경은 Frontend Lead/개발자가 설계하고 필요 시 공동 검토합니다. AA 기준은 픽셀 단위 시안이 아닙니다.
