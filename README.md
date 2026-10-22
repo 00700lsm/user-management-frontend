@@ -21,13 +21,20 @@
 
 [Frontend AA 인계서](docs/aa/README.md)에 화면 ID·경로·API 연계, 사용자 흐름, 공통 UI 품질 체크리스트가 있습니다. 요구/IA/OpenAPI 정본은 Contract 저장소를 참조합니다.
 
-## AI Agent 개발 스킬
+## Frontend AI Agent Skills
 
-- [Frontend 단계별 스킬](.agents/skills/frontend-workflow/SKILL.md): 프로젝트 초기화·공통 Contract 확인·화면 개발·Mock Auth·실제 통합·테스트·PR
-- [Claude Code용 스킬](.claude/skills/frontend-workflow/SKILL.md)
-- [공통 스킬 작성 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
+상시 준수 규칙은 [AGENTS.md](AGENTS.md), 시각 디자인 기준은 **[design.md](design.md)**에서 관리합니다. 다음 Skill은 특정 작업을 요청할 때 명시적으로 사용합니다.
 
-Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책·Mock Fixture·테스트 계획은 Contract 문서가 정본이며 API 타입은 `contract.sha`로 고정합니다.
+| Skill | 사용 시점 | 실행 범위 |
+|---|---|---|
+| [`implement-ui-screen`](.agents/skills/implement-ui-screen/SKILL.md) | 로그인·프로필·관리자 등 특정 화면 개발 | React 화면·API 연결·테스트 작성 |
+| [`create-shared-ui-component`](.agents/skills/create-shared-ui-component/SKILL.md) | Button/Input/Card/Table/Modal 공통화 | `src/shared/ui` 코드·스타일·테스트 작성 |
+| [`validate-frontend-ui`](.agents/skills/validate-frontend-ui/SKILL.md) | CSS/디자인 일관성·빌드·테스트 점검 | 기본 읽기 전용 검사 |
+| [`test-frontend-integration`](.agents/skills/test-frontend-integration/SKILL.md) | 실제 Backend와 Auth/Permission 연결 검증 | Mock 비활성 G3/G4 테스트 판정 |
+
+Claude Code는 `.claude/skills/`에서 같은 이름으로 호출합니다. Cursor/Codex 등은 `.agents/skills/`를 사용합니다. 공통 Skill 작성 원칙은 [Contract 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)를 참조하세요.
+
+디자인 Token 검사: `python3 scripts/check_design_tokens.py` (Python 표준 라이브러리, 별도 설치 불필요). 검사 스크립트는 실제 화면 캡처, 대비, 반응형, 접근성 테스트까지 보장하지 않습니다.
 
 ## 필수 화면·CSS 디자인 기준
 
@@ -35,7 +42,7 @@ Sibling Contract 경로는 `../user-management-contract`입니다. 인증 정책
 
 - 공통 업무·화면 IA 및 UI 원칙은 **Contract 저장소**의 문서를 우선합니다.
 - 구체 시각 스타일/컴포넌트 기준은 이 저장소의 `design.md`를 따릅니다.
-- Cursor: `.cursor/rules/frontend-design.mdc` (alwaysApply), 기타 Agent: `AGENTS.md` / `CLAUDE.md` / Frontend Workflow Skill에서 필수 참조합니다.
+- Cursor: `.cursor/rules/frontend-design.mdc` (alwaysApply), 기타 Agent: `AGENTS.md` / `CLAUDE.md` / 각 작업별 Frontend Skill에서 필수 참조합니다.
 - PoC의 `design.md` 비주얼 토큰/CSS Modules 기준은 Contract DEC-004에서 Accepted됐습니다.
 
 ## Frontend 기술 스택 (PoC Accepted)

@@ -15,7 +15,13 @@
 - [ ] 등록·수정·목록·상세·로그인 공통 페이지 패턴 확정
 - [ ] 유효성 검사/서버 오류/알림/확인 모달 패턴 확정
 - [ ] ADMIN 전용 메뉴·라우팅 및 Forbidden UX 합의
-- [ ] [DEC-004](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md) 처리 상태 확인
+- [ ] [DEC-004](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)의 **Accepted 디자인·기술 스택** 준수 확인
+
+## 검증 Skill 및 자동 검사
+
+- `validate-frontend-ui`: `python3 scripts/check_design_tokens.py`, `npm run typecheck`, `npm run test`, `npm run build` (환경 허용 시)
+- `test-frontend-integration`: Mock 비활성으로 실제 Auth/Backend 연동만 G3/G4로 판정
+- `npm run test:e2e` 현재 설정은 Mock 기반 **G1**만 검증
 
 ## 기능 화면 완료 점검
 - [ ] 화면 ID·route·사용자 역할·화면 이동이 [IA](https://github.com/00700lsm/user-management-contract/blob/dev/docs/ui-structure.md)와 일치

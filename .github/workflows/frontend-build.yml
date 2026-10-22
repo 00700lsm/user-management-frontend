@@ -20,6 +20,8 @@ jobs:
         run: npm run contract:generate
       - name: Initialize MSW worker for dev test
         run: npm run mocks:init
+      - name: Check design CSS tokens
+        run: python3 scripts/check_design_tokens.py
       - name: Typecheck, unit tests, build
         run: |
           npm run typecheck
