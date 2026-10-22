@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiRequest } from "../../shared/api/client";
-import type { ApiUser } from "../../shared/api/client";
-import { mockEnabled } from "../../app/providers/AuthProvider";
+import { apiRequest } from "../../../shared/api/client";
+import type { ApiUser } from "../../../shared/api/client";
+import { mockEnabled } from "../../../app/providers/AuthProvider";
 export function ProfilePage() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["profile"],

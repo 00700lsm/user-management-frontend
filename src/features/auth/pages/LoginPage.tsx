@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth, mockEnabled } from "../../app/providers/AuthProvider";
-import { Button } from "../../shared/ui/components/Button";
+import { useAuth, mockEnabled } from "../../../app/providers/AuthProvider";
+import { Button } from "../../../shared/ui/components/Button";
 
 export function LoginPage() {
   const auth = useAuth();

@@ -21,6 +21,10 @@
 
 [Frontend AA 인계서](docs/aa/README.md)에 화면 ID·경로·API 연계, 사용자 흐름, 공통 UI 품질 체크리스트가 있습니다. 요구/IA/OpenAPI 정본은 Contract 저장소를 참조합니다.
 
+## 디렉터리 및 네이밍 규칙
+
+[Frontend 구현 컨벤션](docs/frontend-conventions.md)을 사용합니다. A/B/C 도메인은 `src/features/{auth,user,permission}/pages`에 화면을 배치하고, 내부 공통 요소는 해당 도메인의 `components`·`hooks`·`api`로 분리합니다. `src/app`은 앱 조립, `src/shared`는 진짜 공통 코드를 담당합니다. URL·API 계약 변경 권한은 이 문서에 없습니다.
+
 ## Frontend AI Agent Skills
 
 상시 준수 규칙은 [AGENTS.md](AGENTS.md), 시각 디자인 기준은 **[design.md](design.md)**에서 관리합니다. 다음 Skill은 특정 작업을 요청할 때 명시적으로 사용합니다.

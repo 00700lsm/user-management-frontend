@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { apiRequest } from "../../shared/api/client";
-import type { ApiUser } from "../../shared/api/client";
-import { Button } from "../../shared/ui/components/Button";
+import { apiRequest } from "../../../shared/api/client";
+import type { ApiUser } from "../../../shared/api/client";
+import { Button } from "../../../shared/ui/components/Button";
 
 type UserPage = { items: ApiUser[]; total: number; page: number; size: number };
 export function UserListPage() {

@@ -6,6 +6,11 @@ This repository owns the React UI. Work and commit only within its Git repositor
 
 **Before creating, changing or reviewing any Frontend page, layout, JSX component, CSS or UX, read the entire root `design.md`.** Follow its design tokens, typography, sizing, Button/Input/Card/Table/Modal states, layout rules, responsive behavior and accessible keyboard/focus patterns. Contract's `docs/ui-guidelines.md` and `docs/ui-structure.md` have higher authority than visual details. If rules conflict, stop and report the exception for AA/FE review. Cursor also applies `.cursor/rules/frontend-design.mdc`.
 
+## Code structure and naming (always-on)
+
+- Read [`docs/frontend-conventions.md`](docs/frontend-conventions.md) before creating/moving any Frontend source, tests or CSS. It defines the single source of truth for directory ownership, import boundaries and names.
+- Route pages live in `src/features/<domain>/pages/`; shared app setup stays in `src/app/`. Do not create domain components in `src/shared/` or hand-edit generated OpenAPI types.
+
 ## Always-on development rules
 
 - Source of truth: sibling `../user-management-contract`, or `repos/user-management-contract` from Workspace. Read its `docs/aa/README.md`, `docs/aa/decisions.md`, `docs/ui-structure.md`, `docs/ui-guidelines.md` and affected REQ/UI/API/TC materials.
