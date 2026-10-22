@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { Link, Navigate, Outlet, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../shared/ui/components/Button";
 import { useAuth } from "./providers/AuthProvider";
-import { LoginPage } from "../features/auth/LoginPage";
-import { SignupPage } from "../features/user/SignupPage";
-import { ProfilePage } from "../features/user/ProfilePage";
-import { UserListPage } from "../features/user/UserListPage";
+import { LoginPage } from "../features/auth/pages/LoginPage";
+import { SignupPage } from "../features/user/pages/SignupPage";
+import { ProfilePage } from "../features/user/pages/ProfilePage";
+import { UserListPage } from "../features/user/pages/UserListPage";
 
 function Protected({ admin = false }: { admin?: boolean }) {
   const auth = useAuth();
