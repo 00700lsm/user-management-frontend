@@ -1,7 +1,11 @@
-# Claude Code Frontend
+# Claude Code — Frontend
 
-Read `AGENTS.md` and invoke `/frontend-workflow` when preparing or implementing FE work. Canonical steps: `.agents/skills/frontend-workflow/SKILL.md`. The shared Contract repository is `../user-management-contract` in the standard Workspace layout; use the OpenAPI version pinned by `contract.sha`. Mock authentication is dev/test only.
+Read `AGENTS.md` and **the complete `design.md` before any UI/component/CSS work**. Read the Contract sibling and use the OpenAPI pinned by `contract.sha`.
 
-## Mandatory design reference
+Invoke a specific skill for the requested work:
+- `/implement-ui-screen`: implement an approved UI ID/route with tests
+- `/create-shared-ui-component`: create reusable CSS-Module components
+- `/validate-frontend-ui`: audit design tokens, TypeScript, tests, build, G1 Mock UI
+- `/test-frontend-integration`: verify real Frontend–Backend/Auth integration (MSW off)
 
-For **every Frontend UI or CSS task**, first read the root `design.md` and apply its component/layout/token rules. Also follow `AGENTS.md` and `.agents/skills/frontend-workflow/SKILL.md`. Do not bypass the document when invoking the workflow from the Workspace root.
+Each adapter in `.claude/skills/<name>/SKILL.md` references the canonical `.agents/skills/<name>/SKILL.md`. Rules apply even when no skill is explicitly called. Never silently update the Contract SHA, branches or Git remote; never claim mock tests are real Backend E2E.

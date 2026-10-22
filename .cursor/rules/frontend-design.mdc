@@ -11,4 +11,4 @@ alwaysApply: true
 - **Reuse `src/shared/ui`**; avoid per-screen button dimensions, arbitrary CSS hex values, duplicated layout or isolated visual design systems.
 - If `design.md` conflicts with approved Contract rules or cannot satisfy a task, report the conflict and propose an explicit reviewed change instead of silently ignoring it.
 - New work must identify its UI/REQ ID and include a quick design consistency review in the result or PR.
-- This file is a Cursor project rule; `AGENTS.md`, `CLAUDE.md` and the Frontend Skill apply the same requirement to other agents.
+- This file is a Cursor project rule; `AGENTS.md`, `CLAUDE.md` and the four task-specific Frontend Skills apply the same requirement to other agents; no generic frontend-workflow is used.

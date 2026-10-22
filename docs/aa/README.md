@@ -1,6 +1,6 @@
 # Frontend AA 설계 인계서
 
-**상태: AA 초안 / 팀 합의 필요.** 이 문서는 Frontend 담당자가 무엇을 어떤 화면에서 구현해야 하는지 설명하는 인계 자료입니다. 공통 요구사항·화면·API 계약을 별도 복제한 정본이 아닙니다.
+**상태: 공통 Contract 승인 기준을 연결하는 인계 문서.** 이 문서는 Frontend 담당자가 무엇을 어떤 화면에서 구현해야 하는지 설명하는 인계 자료입니다. 공통 요구사항·화면·API 계약을 별도 복제한 정본이 아닙니다.
 
 ## AA 공통 정본
 - [전체 AA 인계 목차](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/README.md)
@@ -9,7 +9,7 @@
 - [공통 UI 설계 기준](https://github.com/00700lsm/user-management-contract/blob/dev/docs/ui-guidelines.md)
 - [공통 OpenAPI](https://github.com/00700lsm/user-management-contract/blob/dev/openapi.yaml)
 - [요구·화면·API 추적표](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/traceability.md)
-- [미결정 사항](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)
+- [Accepted PoC 설계 결정](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)
 
 계약의 실제 버전은 이 Repository의 `contract.sha`가 가리키는 커밋입니다. `dev` 브랜치 링크는 읽기 편의를 위한 것이며 자동으로 계약 버전을 바꾸지 않습니다.
 
@@ -30,4 +30,13 @@
 - FE 담당: React 등 구현 방식·상세 레이아웃·컴포넌트 조합·스타일과 테스트
 - 공통 UI 변경은 관련 담당자 공동 검토, API 스키마 변경은 Contract 저장소 PR 선행
 
-이 Repository는 아직 실행 가능한 완성 React 앱이 아니라 초기 구조·타입 생성 준비 상태입니다.
+현재 React/Vite 라우팅·공통 디자인·G1 Mock UI 실행 골격이 있으며 실제 Auth/업무 API 통합과 G3/G4는 아직 구현 전입니다.
+
+## 작업별 Frontend Skill
+
+- [화면 구현](../../.agents/skills/implement-ui-screen/SKILL.md)
+- [공통 UI 컴포넌트 작성](../../.agents/skills/create-shared-ui-component/SKILL.md)
+- [디자인 및 빌드 검증](../../.agents/skills/validate-frontend-ui/SKILL.md)
+- [실제 FE/BE 연동 검증](../../.agents/skills/test-frontend-integration/SKILL.md)
+
+모든 화면·스타일 변경에는 **Frontend 루트 `design.md` 전체 확인**이 선행됩니다.

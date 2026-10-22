@@ -15,7 +15,7 @@
 | Mock | MSW | HTTP 경계에서 승인 API Contract 기반 Mock, 개발/테스트 전용 |
 | Unit UI test | Vitest + React Testing Library | 화면·컴포넌트·Auth Guard 단위 검증 |
 | E2E | Playwright | 실제 Auth 연결 후 가입/로그인/권한 등 G4 검증 |
-| 패키지 | 기존 `npm` 스크립트 유지, Node LTS | 기존 계약 생성 도구 재사용. Node 22.12+ 권장 |
+| 패키지 | 기존 `npm` 스크립트 유지, Node LTS | 기존 계약 생성 도구 재사용. Node 24 권장 |
 
 ## 디자인 기준은 선택사항이 아님
 
@@ -52,6 +52,6 @@ React Router/Query/공통 Button/토큰/Mock Route 골격이 생성됐습니다.
 
 ## 검증/개발 주의
 - `npm run test`, `npm run typecheck`, `npm run build`, `npm run test:e2e`가 있으며 GitHub Actions의 Mock UI G1 테스트가 통과했습니다. G3/G4 실제 Auth/E2E는 미구현.
-- `GET /auth/me`, JWT Role Claims는 현재 Contract에 없는 것으로 간주; Contract 변경 PR 승인 전 임의 사용 금지.
+- `GET /auth/me`는 현재 Contract OpenAPI에 없으므로 임의 호출 금지. Accepted DEC-009에서 JWT `sub` 및 `roles` 클레임은 UI 참고용으로 정의됐지만, 실제 권한은 Backend가 DB 최신 상태를 검증해야 합니다.
 - 개발 Proxy/환경별 API Base URL은 앱 골격 구성 시 결정. 환경별 URL/Secret을 클라이언트 소스에 하드코딩하지 않음.
 - 명시적 승인 없이 기존 `contract.sha`를 바꾸거나 사용자의 기존 브랜치를 변경하지 않음.
