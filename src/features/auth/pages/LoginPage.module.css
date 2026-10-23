@@ -1,0 +1,19 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: var(--space-4); }
+.panel {
+  width: min(100%, 400px);
+  padding: var(--space-8);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: var(--space-4);
+}
+.panel h1 { margin: 0; }
+.subtitle { margin: 0; color: var(--ui-text-secondary); }
+.form { display: grid; gap: var(--space-5); }
+.submit { width: 100%; }
+.signup { margin: 0; text-align: center; }
+.mock { padding-top: var(--space-4); border-top: 1px solid var(--ui-border); display: grid; gap: var(--space-2); }
+.mockActions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+@media (max-width: 767px) { .panel { padding: var(--space-6) var(--space-4); } }
