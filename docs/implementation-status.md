@@ -45,3 +45,10 @@ npm run dev
 - Frontend Build + MSW G1 Mock UI: [성공](https://github.com/00700lsm/user-management-frontend/actions/runs/39346999583)
 - 승인 OpenAPI 타입 생성: [성공](https://github.com/00700lsm/user-management-frontend/actions/runs/39346999603)
 - **실제 Backend Auth/DB/API를 이용한 G3/G4 E2E는 미구현입니다.**
+
+## Auth FE 구현 (feat/auth-jwt, REQ-AUTH-001~003)
+
+- 구현됨: UI-AUTH-001 로그인(보완), UI-AUTH-002 비밀번호 변경(`/settings/password`), Shell 헤더 로그아웃, `features/auth/api/authApi.ts`(login/logout/changePassword), `ApiError.code` 기반 한국어 문구, JWT `exp` 만료 타이머, 403 재로그인 안내.
+- 검증: typecheck / Vitest / build / Playwright **G1 Mock** 통과. Mock(MSW) 결과이며 실제 Backend 결과가 아님.
+- G3 (Real Auth): **BLOCKED** (Backend Auth 미연동). G4 (실제 FE-BE E2E): **NOT_RUN**.
+- `ApiError.code` 목록·비밀번호 정책(`minLength: 12`)은 A 확정안으로 Contract PR 승인 대기 중 (`contract.sha` 미변경).
