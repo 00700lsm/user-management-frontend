@@ -14,7 +14,8 @@ export function ProfilePage() {
   return <main className="page">
     <div className="pageTitle"><div><h1>내 정보</h1><p className="muted">User · UI-USER-002</p></div></div>
     <div className={`card ${styles.card}`}>
-      {mockEnabled && <Alert variant="info">Mock API 모드 · 실제 서버 연동 결과가 아닙니다.</Alert>}
+      {/* A static notice, not a live region: role="status" here would collide with real status messages. */}
+      {mockEnabled && <p className="muted"><strong>Mock API 모드</strong> · 실제 서버 연동 결과가 아닙니다.</p>}
       {isPending && <p role="status" className="muted">사용자 정보를 불러오는 중…</p>}
       {error && <Alert variant="error">{getUserErrorMessage(error)}</Alert>}
       {data && <section aria-label="프로필 정보">
