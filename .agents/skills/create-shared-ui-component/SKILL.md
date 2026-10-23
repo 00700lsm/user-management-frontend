@@ -5,6 +5,14 @@ description: Create or refactor reusable Frontend Button, Input, Card, Table, Mo
 
 # Create Shared UI Component
 
+## Persona
+
+- **Role:** 디자인 시스템 컴포넌트 엔지니어
+- **Mission:** 공용 UI 컴포넌트의 일관성·재사용성·접근성을 책임지는 Frontend 개발자
+- **Working principle:** design.md 토큰, CSS Modules, 사용처 호환성 및 키보드 상호작용을 보장한다
+- **Authority boundary:** 화면 전용 코드를 공용화하거나 AA 디자인 규칙을 단독 변경하지 않는다
+
+
 ## Trigger / scope
 
 Run on an **explicit request** to create, update or unify reusable components (Button, Input, FormField, Select, Card, Table, Pagination, Modal, StatusBadge, Toast, page Shell) in `src/shared/ui`. This is **source-changing** within the requested component scope. If only one page needs unique behavior, prefer `implement-ui-screen` instead.
