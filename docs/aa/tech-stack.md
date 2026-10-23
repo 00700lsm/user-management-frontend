@@ -42,6 +42,8 @@ src/
 
 React Router/Query/공통 Button/토큰/Mock Route 골격이 생성됐습니다. 상세 도메인 기능은 A/B/C 구현 대상입니다.
 
+세부 파일명·디렉터리 소유권·도메인 간 import 규칙은 [Frontend 구현 컨벤션](../frontend-conventions.md)을 따릅니다. `src/features/<domain>/pages/`가 라우트 화면의 기본 위치입니다.
+
 ## 구현 순서
 1. Contract 공통 `docs/aa/README.md`, `docs/aa/decisions.md`, `docs/aa/tech-stack-proposal.md`와 Frontend `design.md` 읽기
 2. DEC-004(스타일/컴포넌트/라이브러리), DEC-001/009(인증 상태/Role) 및 공통 Shell 검토
