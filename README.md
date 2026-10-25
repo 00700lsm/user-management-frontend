@@ -31,6 +31,7 @@
 
 | Skill | 사용 시점 | 실행 범위 |
 |---|---|---|
+| [`prepare-contract-pr`](.agents/skills/prepare-contract-pr/SKILL.md) | 기능 PR을 보내기 직전 | 최신 Contract/dev 비교·영향 검토·안전한 pin 갱신·타입/빌드 테스트 결과 보고 |
 | [`implement-ui-screen`](.agents/skills/implement-ui-screen/SKILL.md) | 로그인·프로필·관리자 등 특정 화면 개발 | React 화면·API 연결·테스트 작성 |
 | [`create-shared-ui-component`](.agents/skills/create-shared-ui-component/SKILL.md) | Button/Input/Card/Table/Modal 공통화 | `src/shared/ui` 코드·스타일·테스트 작성 |
 | [`validate-frontend-ui`](.agents/skills/validate-frontend-ui/SKILL.md) | CSS/디자인 일관성·빌드·테스트 점검 | 기본 읽기 전용 검사 |
