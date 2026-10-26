@@ -1,3 +1,4 @@
+import { ApiRequestError } from "../../../shared/api/client";
 import type { ApiUser } from "../../../shared/api/client";
 import { mockEnabled } from "../../../shared/api/session";
 import { Alert } from "../../../shared/ui/components/Alert";
@@ -11,6 +12,9 @@ const JOINED_DATE = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", d
 
 export function ProfilePage() {
   const { data, isPending, error } = useMyProfile();
+  // A failed refetch keeps the old data. After 401/403 it must not stay on screen; after a network
+  // or server error the last profile stays visible under the error message.
+  const isDenied = error instanceof ApiRequestError && (error.status === 401 || error.status === 403);
   return <main className="page">
     <div className="pageTitle"><div><h1>내 정보</h1><p className="muted">User · UI-USER-002</p></div></div>
     <div className={`card ${styles.card}`}>
@@ -18,7 +22,7 @@ export function ProfilePage() {
       {mockEnabled && <p className="muted"><strong>Mock API 모드</strong> · 실제 서버 연동 결과가 아닙니다.</p>}
       {isPending && <p role="status" className="muted">사용자 정보를 불러오는 중…</p>}
       {error && <Alert variant="error">{getUserErrorMessage(error)}</Alert>}
-      {data && <section aria-label="프로필 정보">
+      {data && !isDenied && <section aria-label="프로필 정보">
         <dl className={styles.fields}>
           <dt>로그인 ID</dt><dd>{data.loginId}</dd>
           <dt>이름</dt><dd>{data.name}</dd>

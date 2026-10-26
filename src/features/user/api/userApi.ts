@@ -14,4 +14,4 @@ export function getUserErrorMessage(error: unknown): string {
 }
 
 /** GET /users/me (getMyProfile, REQ-USER-002). The server decides whose profile from the token. */
-export const getMyProfile = () => apiRequest<ApiUser>("/users/me");
+export const getMyProfile = (signal?: AbortSignal) => apiRequest<ApiUser>("/users/me", { signal });
