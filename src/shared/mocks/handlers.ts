@@ -27,6 +27,28 @@ const apiError = (status: number, code: string, message: string) => HttpResponse
 const denied = (code: number) => code === 401
   ? apiError(401, "UNAUTHORIZED", "로그인이 필요합니다.") : apiError(403, "FORBIDDEN", "접근 권한이 없습니다.");
 const utf8Bytes = (s: string) => new TextEncoder().encode(s).length;
+const ROLE_CATALOG = [
+  { code: "ADMIN", name: "Administrator" },
+  { code: "USER", name: "General user" },
+];
+const assignedRoles = new Map<string, string[]>([
+  ["1001", ["USER"]],
+  ["1002", ["ADMIN"]],
+]);
+const requireAdmin = (request: Request) => {
+  const role = roleOf(request);
+  if (!role) return denied(401);
+  if (role !== "ADMIN") return denied(403);
+  return null;
+};
+const readRoleCodes = (body: unknown): string[] | null => {
+  if (!body || typeof body !== "object" || Array.isArray(body)) return null;
+  const codes = (body as { roleCodes?: unknown }).roleCodes;
+  if (!Array.isArray(codes) || codes.length === 0) return null;
+  if (codes.some((code) => code !== "USER" && code !== "ADMIN")) return null;
+  if (new Set(codes).size !== codes.length) return null;
+  return codes;
+};
 
 export const handlers = [
   http.post("/api/auth/login", async ({ request }) => {
@@ -61,5 +83,27 @@ export const handlers = [
     if (!role) return denied(401);
     if (role !== "ADMIN") return denied(403);
     return HttpResponse.json({ items: [mkUser(1001, "USER"), mkUser(1002, "ADMIN")], page: 0, size: 20, total: 2 });
+  }),
+  http.get("/api/admin/roles", ({ request }) => {
+    const blocked = requireAdmin(request);
+    return blocked ?? HttpResponse.json(ROLE_CATALOG);
+  }),
+  http.get("/api/admin/users/:id/roles", ({ request, params }) => {
+    const blocked = requireAdmin(request);
+    if (blocked) return blocked;
+    const id = String(params.id);
+    const roleCodes = assignedRoles.get(id);
+    if (!roleCodes) return apiError(404, "NOT_FOUND", "요청한 리소스를 찾을 수 없습니다.");
+    return HttpResponse.json({ userId: Number(id), roleCodes });
+  }),
+  http.put("/api/admin/users/:id/roles", async ({ request, params }) => {
+    const blocked = requireAdmin(request);
+    if (blocked) return blocked;
+    const id = String(params.id);
+    if (!assignedRoles.has(id)) return apiError(404, "NOT_FOUND", "요청한 리소스를 찾을 수 없습니다.");
+    const roleCodes = readRoleCodes(await request.json().catch(() => null));
+    if (!roleCodes) return apiError(400, "VALIDATION_FAILED", "요청 형식이 올바르지 않습니다.");
+    assignedRoles.set(id, roleCodes);
+    return HttpResponse.json({ userId: Number(id), roleCodes });
   }),
 ];
