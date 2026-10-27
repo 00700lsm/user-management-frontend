@@ -1,0 +1,4 @@
+.card { display: grid; gap: var(--space-5); }
+.tableWrap { overflow-x: auto; }
+.tableWrap tr { height: var(--height-table-row); }
+.tableWrap td { overflow-wrap: anywhere; }

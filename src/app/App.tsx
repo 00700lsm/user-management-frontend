@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, Outlet, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 import { FORBIDDEN_EVENT } from "../shared/api/session";
 import { Alert } from "../shared/ui/components/Alert";
 import { Button } from "../shared/ui/components/Button";
@@ -9,6 +9,8 @@ import { LoginPage } from "../features/auth/pages/LoginPage";
 import { SignupPage } from "../features/user/pages/SignupPage";
 import { ProfilePage } from "../features/user/pages/ProfilePage";
 import { UserListPage } from "../features/user/pages/UserListPage";
+import { RoleListPage } from "../features/permission/pages/RoleListPage";
+import { UserRolesPage } from "../features/permission/pages/UserRolesPage";
 
 function Protected({ admin = false }: { admin?: boolean }) {
   const auth = useAuth();
@@ -76,6 +78,13 @@ function Scaffold({ title, description, links }: {
   </main>;
 }
 
+function UserDetailPlaceholder() {
+  const { id = "" } = useParams();
+  return <Scaffold title="사용자 상세" description="User / UI-USER-004 · API 연결 전" links={[
+    { path: `/admin/users/${id}/roles`, label: "권한 관리" },
+  ]} />;
+}
+
 export function App() {
   return <Routes>
     <Route path="/login" element={<LoginPage />} />
@@ -87,9 +96,9 @@ export function App() {
         <Route path="/settings/password" element={<ChangePasswordPage />} />
         <Route element={<Protected admin />}>
           <Route path="/admin/users" element={<UserListPage />} />
-          <Route path="/admin/users/:id" element={<Scaffold title="사용자 상세" description="User / UI-USER-004 · API 연결 전" />} />
-          <Route path="/admin/roles" element={<Scaffold title="역할 관리" description="Permission / UI-PERM-001 · API 연결 전" />} />
-          <Route path="/admin/users/:id/roles" element={<Scaffold title="사용자 권한 관리" description="Permission / UI-PERM-002 · API 연결 전" />} />
+          <Route path="/admin/users/:id" element={<UserDetailPlaceholder />} />
+          <Route path="/admin/roles" element={<RoleListPage />} />
+          <Route path="/admin/users/:id/roles" element={<UserRolesPage />} />
         </Route>
       </Route>
     </Route>

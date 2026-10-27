@@ -1,0 +1,14 @@
+.crumb { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4); color: var(--ui-text-secondary); }
+.crumb a { color: var(--ui-text); }
+.card { max-width: 760px; display: grid; gap: var(--space-5); }
+.form { display: grid; gap: var(--space-5); }
+.choices { display: grid; gap: var(--space-3); margin: 0; padding: 0; border: 0; min-width: 0; }
+.choices legend { font-size: 13px; font-weight: 600; margin-bottom: var(--space-2); }
+.choice { display: flex; align-items: center; gap: var(--space-3); min-height: var(--height-control); }
+.choice input { width: 18px; height: 18px; accent-color: var(--ui-primary); }
+.code { color: var(--ui-text-muted); }
+.fieldError { margin: 0; color: var(--ui-danger); }
+.footer { display: flex; justify-content: flex-end; gap: var(--space-3); }
+@media (max-width: 767px) {
+  .footer button { width: 100%; }
+}
