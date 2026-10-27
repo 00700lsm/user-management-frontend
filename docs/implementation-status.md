@@ -50,5 +50,6 @@ npm run dev
 
 - 구현됨: UI-AUTH-001 로그인(보완), UI-AUTH-002 비밀번호 변경(`/settings/password`), Shell 헤더 로그아웃, `features/auth/api/authApi.ts`(login/logout/changePassword), `ApiError.code` 기반 한국어 문구, JWT `exp` 만료 타이머, 403 재로그인 안내.
 - 검증: typecheck / Vitest / build / Playwright **G1 Mock** 통과. Mock(MSW) 결과이며 실제 Backend 결과가 아님.
-- G3 (Real Auth): **BLOCKED** (Backend Auth 미연동). G4 (실제 FE-BE E2E): **NOT_RUN**.
+- G3 (Real Auth, Backend 범위): **PASS** — 근거: backend PR #14 comment.
+- G4 (실제 FE-BE E2E, MSW off) 2026-10-27 수행: TC-INT-001/002/003/005/008/009, REQ-AUTH-003 **PASS**. 비밀번호 변경 후 재로그인 이동 결함은 이 PR로 수정. TC-INT-004/006/010 **BLOCKED**(User API 미구현), 토큰 만료 **NOT_RUN**(15분 대기).
 - `ApiError.code` 목록·비밀번호 정책(`minLength: 12`)은 A 확정안으로 Contract PR 승인 대기 중 (`contract.sha` 미변경).

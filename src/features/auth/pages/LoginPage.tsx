@@ -21,7 +21,8 @@ export function LoginPage() {
   const [busy, setBusy] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<{ loginId?: string; password?: string }>({});
   const [error, setError] = useState("");
-  const redirect = state?.from ?? "/me";
+  const from = state?.reason === "passwordChanged" ? undefined : state?.from;
+  const redirect = from && from !== "/login" ? from : "/me";
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

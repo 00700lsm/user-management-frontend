@@ -46,6 +46,20 @@ describe("LoginPage", () => {
     await waitFor(() => expect(screen.getByText("내 정보 화면")).toBeInTheDocument());
     expect(sessionStorage.getItem("um_access_token")).not.toBeNull();
   });
+  it.each([
+    [{ from: "/settings/password", reason: "passwordChanged" }, "내 정보 화면"],
+    [{ from: "/admin/users", reason: "expired" }, "사용자 관리 화면"],
+  ])("redirects after re-login with state %j", async (state, screenText) => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ accessToken: makeToken("1", ["ADMIN"], 60), tokenType: "bearer" }))));
+    render(<AuthProvider><MemoryRouter initialEntries={[{ pathname: "/login", state }]}>
+      <Routes><Route path="/login" element={<LoginPage />} /><Route path="/me" element={<p>내 정보 화면</p>} />
+        <Route path="/admin/users" element={<p>사용자 관리 화면</p>} /><Route path="/settings/password" element={<p>비밀번호 변경 화면</p>} /></Routes>
+    </MemoryRouter></AuthProvider>);
+    type("로그인 ID", "dev-user");
+    type("비밀번호", "pw");
+    submit();
+    await waitFor(() => expect(screen.getByText(screenText)).toBeInTheDocument());
+  });
   it("toggles password visibility", () => {
     setup();
     const pw = screen.getByLabelText("비밀번호");
