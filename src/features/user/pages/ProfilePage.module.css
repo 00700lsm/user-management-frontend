@@ -1,0 +1,8 @@
+.card { max-width: 760px; display: grid; gap: var(--space-5); }
+.fields { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: var(--space-4) var(--space-6); margin: 0; }
+.fields dt { font-size: 13px; font-weight: 600; color: var(--ui-text-secondary); }
+.fields dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .fields { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
+  .fields dd + dt { margin-top: var(--space-3); }
+}
